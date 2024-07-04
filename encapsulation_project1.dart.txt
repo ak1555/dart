@@ -1,0 +1,43 @@
+/* Simple Hello, World! program */
+import 'dart:io';
+class Bank{
+    double _balance=0.0;
+    double get balance=>_balance;
+    void deposit(double amount){
+        this._balance+=amount;
+    }
+    void withdraw(double amount){
+        this._balance=amount;
+    }
+}
+void main(){
+    var detil=Bank();
+    
+    int? choice = int.parse(stdin.readLineSync()!);
+    
+    while(choice!=4){
+        print("enter your choice: \n\t1:deposit\n\t2:withdraw\n\t3:balance\n\t4:exit");
+        if(choice==1){
+           print("enter amount to deposit:");
+           double? amount = double.parse(stdin.readLineSync()!);
+           detil.deposit(amount);
+           print("deposited");
+           break;
+        }
+        else if(choice==2){
+            print("enter the amount to withdraw:");
+            double? withdrawcash=double.parse(stdin.readLineSync()!);
+            detil.withdraw(withdrawcash);
+            print("succesfully withdrawed");
+            break;
+        }
+        else if(choice==3){
+            print("your bank balance is:${detil.balance}");
+        }
+        else{
+            print("invalid choice");
+        }
+    }
+    
+    print("exited");
+}
